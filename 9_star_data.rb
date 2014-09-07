@@ -1,20 +1,33 @@
-nine_years = [1901, 19010, 1919, 1928]
-eight_years = [1902, 1911, 1920, 1929]
-seven_years = [1903, 1912, 1921, 1930]
-six_years = [1904, 1913, 1922, 1931]
-five_years = [1905, 1914, 1923, 1932]
-four_years = [1906, 1915, 1924, 1933]
-three_years = [1907, 1916, 1925, 1934]
-two_years = [1908, 1917, 1926, 1935]
-one_years = [1909, 1918, 1927, 1936]
+require 'pry'
 
-nine = {Nine Fire: Lover}
-eight = {Eight Earth: Transformer}
-seven = {Seven Metal: Artist}
-six = {Six Metal: Father}
-five = {Five Earth: Center}
-four  = {Four Wood: Guide}
-three = {Three Wood: Warrior}
-two = {Two Earth: Mother}
-one = {One Water: Innovator}
+years_array = [
+{ :year => 1901, :number => 9, :element => "fire" },
+{ :year => 1902, :number => 8, :element => "earth" },
+{ :year => 1903, :number => 7, :element => "metal" },
+{ :year => 1904, :number => 6, :element => "metal" },
+{ :year => 1905, :number => 5, :element => "earth" },
+{ :year => 1906, :number => 4, :element => "wood" },
+{ :year => 1907, :number => 3, :element => "wood" },
+{ :year => 1908, :number => 2, :element => "earth" },
+{ :year => 1909, :number => 1, :element => "water" },
+]
+
+# nine = {Nine Fi re: Lover}
+# eight = {Eight Earth: Transformer}
+# seven = {Seven Metal: Artist}
+# six = {Six Metal: Father}
+# five = {Five Earth: Center}
+# four  = {Four Wood: Guide}
+# three = {Three Wood: Warrior}
+# two = {Two Earth: Mother}
+# one = {One Water: Innovator}
+
+  # binding.pry
+def get_first_number
+  years_array.each do |year|
+  puts "#{year[:year]}: #{year[:number]} #{year[:element]}"
+  end
+end
+
+def describe_element
 
