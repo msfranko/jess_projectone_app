@@ -1,18 +1,30 @@
-# module 9StarData
+module 9StarData
 require 'pry'
 
-KI_NUMBERS = [
-  [1901, 1910, 1919, 1928, 1937, 1946, 1955, 1964, 1973, 1982, 1991, 2000, 2009],
-  [1902, 1911, 1920, 1929, 1938, 1947, 1956, 1965, 1974, 1983, 1992, 2001, 2010],
-  [1903, 1912, 1921, 1930, 1939, 1948, 1957, 1966, 1975, 1984, 1993, 2002, 2011],
-  [1904, 1913, 1922, 1931, 1940, 1949, 1958, 1967, 1976, 1985, 1994, 2003, 2012],
-  [1905, 1914, 1923, 1932, 1941, 1950, 1959, 1968, 1977, 1986, 1995, 2004, 2013],
-  [1906, 1915, 1924, 1933, 1942, 1951, 1960, 1969, 1978, 1987, 1996, 2005, 2014],
-  [1907, 1916, 1925, 1934, 1943, 1952, 1961, 1970, 1979, 1988, 1997, 2006, 2015],
-  [1908, 1917, 1926, 1936, 1944, 1953, 1962, 1971, 1980, 1989, 1998, 2007, 2016],
-  [1909, 1918, 1927, 1937, 1945, 1954, 1963, 1972, 1981, 1990, 1999, 2008, 2017],
-]
+# KI_NUMBERS = [
+#   [1901, 1910, 1919, 1928, 1937, 1946, 1955, 1964, 1973, 1982, 1991, 2000, 2009],
+#   [1902, 1911, 1920, 1929, 1938, 1947, 1956, 1965, 1974, 1983, 1992, 2001, 2010],
+#   [1903, 1912, 1921, 1930, 1939, 1948, 1957, 1966, 1975, 1984, 1993, 2002, 2011],
+#   [1904, 1913, 1922, 1931, 1940, 1949, 1958, 1967, 1976, 1985, 1994, 2003, 2012],
+#   [1905, 1914, 1923, 1932, 1941, 1950, 1959, 1968, 1977, 1986, 1995, 2004, 2013],
+#   [1906, 1915, 1924, 1933, 1942, 1951, 1960, 1969, 1978, 1987, 1996, 2005, 2014],
+#   [1907, 1916, 1925, 1934, 1943, 1952, 1961, 1970, 1979, 1988, 1997, 2006, 2015],
+#   [1908, 1917, 1926, 1936, 1944, 1953, 1962, 1971, 1980, 1989, 1998, 2007, 2016],
+#   [1909, 1918, 1927, 1937, 1945, 1954, 1963, 1972, 1981, 1990, 1999, 2008, 2017],
+# ]
 
+NUMBER_DESCRIPTIONS = [
+"Nine Fire: Lover",
+"Eight Earth: Transformer",
+"Seven Metal: Artist",
+"Six Metal: Father",
+"Five Earth: Center",
+"Four Wood: Guide",
+"Three Wood: Warrior",
+"Two Earth: Mother",
+"One Water: Innovator",
+]
+end
 
 # def get_year_ki(year)
 #   KI_NUMBERS.each do |years_array|
@@ -25,39 +37,35 @@ KI_NUMBERS = [
 def calculate_year_ki(year)
   value1 = year % 9
   case value1
-    when 2 element = nine_fire
-    when 3 element = eight_earth
-    when 4 element = seven_metal
-    when 5 element = six_metal
-    when 6 element = five_earth
-    when 7 element = four_wood
-    when 8 element = three_wood
-    when 0 element = two_earth
-    when 1 element = one_water
+    when 2
+      # element = nine_fire
+      puts NUMBER_DESCRIPTIONS[0]
+    when 3
+      # element = eight_earth
+      puts NUMBER_DESCRIPTIONS[1]
+    when 4
+      # element = seven_metal
+      puts NUMBER_DESCRIPTIONS[2]
+    when 5
+      # element = six_metal
+      puts NUMBER_DESCRIPTIONS[3]
+    when 6
+      # element = five_earth
+      puts NUMBER_DESCRIPTIONS[4]
+    when 7
+      # element = four_wood
+      puts NUMBER_DESCRIPTIONS[5]
+    when 8
+      # element = three_wood
+      puts NUMBER_DESCRIPTIONS[6]
+    when 0
+      # element = two_earth
+      puts NUMBER_DESCRIPTIONS[7]
+    when 1
+      # element = one_water
+      puts NUMBER_DESCRIPTIONS[8]
   end
 end
-
-
-# { :1901 => 9, :element => "fire" },
-# { :1902 => 8, :element => "earth" },
-# { :1903 => 7, :element => "metal" },
-# { :1904 => 6, :element => "metal" },
-# { :1905 => 5, :element => "earth" },
-# { :1906 => 4, :element => "wood" },
-# { :1907 => 3, :element => "wood" },
-# { :1908 => 2, :element => "earth" },
-# { :1909 => 1, :element => "water" },
-# ]
-
-# nine = {Nine Fire: Lover}
-# eight = {Eight Earth: Transformer}
-# seven = {Seven Metal: Artist}
-# six = {Six Metal: Father}
-# five = {Five Earth: Center}
-# four  = {Four Wood: Guide}
-# three = {Three Wood: Warrior}
-# two = {Two Earth: Mother}
-# one = {One Water: Innovator}
 
   # binding.pry
 # def get_first_number(year)
