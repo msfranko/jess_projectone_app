@@ -1,6 +1,20 @@
-require 'pry'
+module 9StarData
 
-# years_array = [
+KI_NUMBERS = {
+  :9 => [1901, 1910, 1919, 1928, 1937, 1946, 1955, 1964, 1973, 1982, 1991, 2000, 2009]
+  :8 => [1902, 1911, 1920, 1929, 1938, 1947, 1956, 1965, 1974, 1983, 1992, 2001, 2010]
+  :7 => [1903, 1912, 1921, 1930, 1939, 1948, 1957, 1966, 1975, 1984, 1993, 2002, 2011]
+  :6 => [1904, 1913, 1922, 1931, 1940, 1949, 1958, 1967, 1976, 1985, 1994, 2003, 2012]
+  :5 => [1905, 1914, 1923, 1932, 1941, 1950, 1959, 1968, 1977, 1986, 1995, 2004, 2013]
+  :4 => [1906, 1915, 1924, 1933, 1942, 1951, 1960, 1969, 1978, 1987, 1996, 2005, 2014]
+  :3 => [1907, 1916, 1925, 1934, 1943, 1952, 1961, 1970, 1979, 1988, 1997, 2006, 2015]
+  :2 => [1908, 1917, 1926, 1936, 1944, 1953, 1962, 1971, 1980, 1989, 1998, 2007, 2016]
+  :1 => [1909, 1918, 1927, 1937, 1945, 1954, 1963, 1972, 1981, 1990, 1999, 2008, 2017]
+}
+
+
+
+
 # { :1901 => 9, :element => "fire" },
 # { :1902 => 8, :element => "earth" },
 # { :1903 => 7, :element => "metal" },
@@ -12,22 +26,22 @@ require 'pry'
 # { :1909 => 1, :element => "water" },
 # ]
 
-nine = {Nine Fire: Lover}
-eight = {Eight Earth: Transformer}
-seven = {Seven Metal: Artist}
-six = {Six Metal: Father}
-five = {Five Earth: Center}
-four  = {Four Wood: Guide}
-three = {Three Wood: Warrior}
-two = {Two Earth: Mother}
-one = {One Water: Innovator}
+# nine = {Nine Fire: Lover}
+# eight = {Eight Earth: Transformer}
+# seven = {Seven Metal: Artist}
+# six = {Six Metal: Father}
+# five = {Five Earth: Center}
+# four  = {Four Wood: Guide}
+# three = {Three Wood: Warrior}
+# two = {Two Earth: Mother}
+# one = {One Water: Innovator}
 
   # binding.pry
-# def get_first_number
-#   years_array.each do |year|
-#   puts "#{year[:year]}: #{year[:number]} #{year[:element]}"
+# def get_first_number(year)
+#     years_array.fetch do |year|
+#     puts "#{year[:year]}: #{year[:number]} #{year[:element]}"
+#     end
 #   end
-# end
 
 # def year_ki(year)
 # if year > 1899 && year < 2000
@@ -54,52 +68,65 @@ one = {One Water: Innovator}
 #   end
 
 
-def get_year_ki(year)
-  if year.to_s.match(/19\d\d/)
-  if year.to_s.match(/20\d\d/)
+def calculate_year_ki(year)
+   value1 = year.to_s.match(/(\d)\d\d\d/).to_i
+   value2 = year.to_s.match(/\d(\d)\d\d/).to_i
+   value3 = year.to_s.match(/\d\d(\d)\d/).to_i
+   value4 = year.to_s.match(/\d\d\d(\d)/).to_i
+   value 5 = value1 + value2 + value3 + value4
+    case value5
+      when value5 < 10
+        final_value = 11 - value5
+      when value5 >= 10
+        value1 = value5.match(/(\d)\d/).to_i
+        value2 = value5.match(/\d(\d)/).to_i
+        value3 = value1 + value2
+        final_value = 11 - value3
+    end
 end
 
-  def twentieth_cent_year_ki(year)
-    value1 = year.to_s.match(/19(\d)\d/).to_i
-    value2 = year.to_s.match(/19\d(\d)/).to_i
-    value3 = value1 + value2
-  end
 
-  def twentieth_cent_value3_math(value3)
-    case value3
-      when value3 < 10
-        final_value = 10 - value3
-      when value3 >= 10
-        value1 = value3.match(/(\d)\d/).to_i
-        value2 = value3.match(/\d(\d)/).to_i
-        value3 = value1 + value2
-        final_value = 10 - value3
-      end
-  end
+#   def twentieth_cent_year_ki(year)
+#     value1 = year.to_s.match(/19(\d)\d/).to_i
+#     value2 = year.to_s.match(/19\d(\d)/).to_i
+#     value3 = value1 + value2
+#   end
 
-  def twentyfirst_cent_year_ki(year)
-    value1 = year.to_s.match(/20(\d)\d/).to_i
-    value2 = year.to_s.match(/20\d(\d)/).to_i
-    value3 = 2 + 0 + value1 + value2
-  end
+#   def twentieth_cent_value3_math(value3)
+#     case value3
+#       when value3 < 10
+#         final_value = 10 - value3
+#       when value3 >= 10
+#         value1 = value3.match(/(\d)\d/).to_i
+#         value2 = value3.match(/\d(\d)/).to_i
+#         value3 = value1 + value2
+#         final_value = 10 - value3
+#       end
+#   end
 
-  def twentyfirst_cent_value3_math(value3)
-    case value3
-      when value3 < 10
-        final_value = 11 - value3
-      when value3 >= 10
-        value1 = value3.match(/(\d)\d/).to_i
-        value2 = value3.match(/\d(\d)/).to_i
-        value3 = value1 + value2
-        final_value = 11 - value3
-      end
-  end
+#   def twentyfirst_cent_year_ki(year)
+#     value1 = year.to_s.match(/20(\d)\d/).to_i
+#     value2 = year.to_s.match(/20\d(\d)/).to_i
+#     value3 = 2 + 0 + value1 + value2
+#   end
 
-
-
-
-
+#   def twentyfirst_cent_value3_math(value3)
+#     case value3
+#       when value3 < 10
+#         final_value = 11 - value3
+#       when value3 >= 10
+#         value1 = value3.match(/(\d)\d/).to_i
+#         value2 = value3.match(/\d(\d)/).to_i
+#         value3 = value1 + value2
+#         final_value = 11 - value3
+#       end
+#   end
 
 
 # def describe_element
 
+
+
+
+
+end

@@ -21,6 +21,12 @@ class App < Sinatra::Base
     logger.info "Response Headers: #{response.headers}"
   end
 
+
+  ########################
+  # Methods
+  ########################
+
+
   ########################
   # Routes
   ########################
