@@ -82,12 +82,25 @@ end
   # Routes
   ########################
   get('/') do
+    @descriptions = []
+    # $redis.keys.each do |key|
+    #   @descriptions$redis.get(key)
     render :erb, :index
+  end
+
+  get('/descriptions/:id') do
+  #   @description = get_model_from_redis("descriptions:#{params[:id]}")
+  #   @description["show"] = true
+  #   render(:erb, :"description/show")
   end
 
   get('/birthdate') do
     @year = params[:year]
-    element_result = calculate_year_ki(@year)
+    description = calculate_year_ki(@year)
     render :erb, :birthdate
     end
+  end
+
+  post('/birthdate') do
+    $redis.set("description")
   end
