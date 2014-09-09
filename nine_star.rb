@@ -179,18 +179,19 @@ module NineStar
       :famous_people => "Catherine the Great, Anwar Sadat, Fidel Castro, Captain Cook, Sir Francis Drake, Eric Clapton, Errol FLynn, James Joyce, Diane Keaton, Igor Stravinsky, Andy Warhol, Rory Underwood"
     }
   }
+end
 
-  class ::Date
-    def star_ki_number
-      element = get_ki_element_for_year(self.year)
-      index = get_date_range_index_from_date(self)
-      get_star_ki_number(index, element)
-    end
+class Date
+  include NineStar
 
-    def star_ki_element
-      element = get_ki_element_for_year(self.year)
-      STAR_KI_DESCRIPTIONS[element]
-    end
+  def star_ki_number
+    element = get_ki_element_for_year(self.year)
+    index = get_date_range_index_from_date(self)
+    get_star_ki_number(index, element)
   end
 
+  def star_ki_element
+    element = get_ki_element_for_year(self.year)
+    STAR_KI_DESCRIPTIONS[element]
+  end
 end
