@@ -46,8 +46,8 @@ class App < Sinatra::Base
 ]
 
 def calculate_year_ki(year)
-  value1 = year % 9
-  element_result = case value1
+  value1 = year.to_i % 9
+  case value1
     when 2
       # element = nine_fire
       NUMBER_DESCRIPTIONS[0]
@@ -86,8 +86,8 @@ end
   end
 
   get('/birthdate') do
-    # @year = params[:birth]
-    # result = calculate_year_ki(@year)
-  render :erb, :birthdate
+    @year = params[:year]
+    element_result = calculate_year_ki(@year)
+    render :erb, :birthdate
+    end
   end
-end
