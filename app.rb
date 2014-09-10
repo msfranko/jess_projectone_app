@@ -83,7 +83,7 @@ class App < Sinatra::Base
   # Routes
   ########################
   get('/') do
-    @user_ki = []
+    # @user_ki = []
     # $redis.keys.each do |key|
     #   @user_ki << $redis.get(key)
     # end
