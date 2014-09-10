@@ -52,6 +52,7 @@ module NineStar
     day_of_year = date.yday
 
     date_ranges.each_with_index do |range, index|
+      binding.pry
       if range.include?(day_of_year)
         return index
       end

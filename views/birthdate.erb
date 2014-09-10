@@ -1,9 +1,10 @@
-<form method="GET" action="/birthdate">
+<form method="POST" action="/user_ki">
   <h1>Enter your birthdate to find your Numbers:</h1>
   <p>
     <label for="month">
         <span>Month:</span>
         <select id="month" name="month">
+          <option value="0"></option>
           <option value="1">January</option>
           <option value="2">Febrary</option>
           <option value="3">March</option>
@@ -24,6 +25,7 @@
     <label for="day">
         <span>Day:</span>
         <select id="day" name="day">
+          <option value="0"></option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -64,6 +66,7 @@
     <label for="year">
         <span>Year:</span>
         <select id="year" name="year">
+          <option value="0"></option>
           <option value="1960">1960</option>
           <option value="1961">1961</option>
           <option value="1962">1962</option>
@@ -133,9 +136,13 @@
 
 <% if @star_ki_number %>
   <div class="hellyeaaaahh">
-    <h2>Your 9 * Ki Number is...</h2>
+    <h2>Your 9 * Ki Numbers are:</h2>
     <p><%= @star_ki_number %></p>
-    <h2>Your 9 * Ki Element Description is...</h2>
+    <h2>You are a </h2>
+    <h2><%= @star_ki_element[:element] %></h2>
+    <h2>"<%= @star_ki_element[:name] %>"</h2>
     <p><%= @star_ki_element[:description] %></p>
+    <h3>Famous <%= @star_ki_element[:element] %>s:</h3>
+    <h3><%= @star_ki_element[:famous_people] %></h3>
   </div>
 <% end %>
