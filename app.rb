@@ -96,7 +96,7 @@ class App < Sinatra::Base
   #   render(:erb, :"user_ki/show")
   # end
 
-  get('/birthdate') do
+  get('/user_ki') do
 
     render :erb, :birthdate
   end
