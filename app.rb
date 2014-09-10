@@ -3,7 +3,6 @@ require 'sinatra/base'
 require 'redis'
 require 'json'
 require 'uri'
-require 'pry'
 
 class App < Sinatra::Base
   include NineStar
