@@ -85,36 +85,38 @@ class App < Sinatra::Base
   ########################
   get('/') do
     @user_ki = []
-    $redis.keys.each do |key|
-      @user_ki$redis.get(key)
+    # $redis.keys.each do |key|
+    #   @user_ki << $redis.get(key)
+    # end
     render :erb, :index
   end
 
-  get('/user_ki/:id') do
-    @user_ki = get_model_from_redis("user_ki:#{params[:id]}")
-    @user_ki["show"] = true
-    render(:erb, :"description/show")
-  end
+  # get('/user_ki/:id') do
+  #   @user_ki = get_model_from_redis("user_ki:#{params[:id]}")
+  #   @user_ki["show"] = true
+  #   render(:erb, :"user_ki/show")
+  # end
 
   get('/birthdate') do
 
     render :erb, :birthdate
   end
 
-  #should it be /descriptions or /birthdate?
+
   post('/user_ki') do
     year  = params[:year].to_i
     month = params[:month].to_i
     day   = params[:day].to_i
 
-    # FIXME breaks in browser when month == Jan
     if year != 0 && month != 0 && day != 0
       @star_ki_number  = Date.new(year,month,day).star_ki_number
       @star_ki_element = Date.new(year,month,day).star_ki_element
     end
-    new_id = $redis.keys.size + 1
-  # user_ki is redis model
-    $redis.set("user_ki:#{new_id}", {:star_ki_number => @star_ki_number, :star_ki_element => @star_ki_element})
-    redirect to "/user_ki/#{new_id}"
+
+    # new_id = $redis.keys.size + 1
+    # # user_ki is redis model
+    # $redis.set("user_ki:#{new_id}", {:star_ki_number => @star_ki_number, :star_ki_element => @star_ki_element})
+    # # redirect to "/user_ki/#{new_id}"
+    render :erb, :birthdate
   end
 end

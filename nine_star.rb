@@ -14,6 +14,8 @@ module NineStar
   }
 
   STAR_KI_DATE_RANGES = [
+    {:start => "Jan 1", :end => "Jan 5"},
+    {:start => "Jan 6", :end => "Feb 3"},
     {:start => "Feb 4", :end => "Mar 5"},
     {:start => "Mar 6", :end => "Apr 5"},
     {:start => "Apr 6", :end => "May 5"},
@@ -24,8 +26,7 @@ module NineStar
     {:start => "Sep 8", :end => "Oct 8"},
     {:start => "Oct 9", :end => "Nov 7"},
     {:start => "Nov 8", :end => "Dec 7"},
-    {:start => "Dec 8", :end => "Jan 5"},
-    {:start => "Jan 6", :end => "Feb 3"}
+    {:start => "Dec 8", :end => "Dec 31"}
   ]
 
   def get_ki_element_for_year(year)
@@ -52,7 +53,7 @@ module NineStar
     day_of_year = date.yday
 
     date_ranges.each_with_index do |range, index|
-      binding.pry
+      # binding.pry
       if range.include?(day_of_year)
         return index
       end
@@ -62,6 +63,8 @@ module NineStar
   end
 
   STAR_KI_NUMBERS = [
+    {"9 Fire" => "9.4.1", "8 Earth" => "8.1.3", "7 Metal" => "7.7.5", "6 Metal" => "6.4.7", "5 Earth" => "5.1.9", "4 Wood" => "4.7.2", "3 Wood" => "3.4.4", "2 Earth" => "2.1.6", "1 Water" => "1.7.8"},
+    {"9 Fire" => "9.3.2", "8 Earth" => "8.9.4", "7 Metal" => "7.6.6", "6 Metal" => "6.3.8", "5 Earth" => "5.9.1", "4 Wood" => "4.6.3", "3 Wood" => "3.3.5", "2 Earth" => "2.9.7", "1 Water" => "1.6.9"},
     {"9 Fire" => "9.5.9", "8 Earth" => "8.2.2", "7 Metal" => "7.8.4", "6 Metal" => "6.5.6", "5 Earth" => "5.2.8", "4 Wood" => "4.8.1", "3 Wood" => "3.5.3", "2 Earth" => "2.2.5", "1 Water" => "1.8.7"},
     {"9 Fire" => "9.4.1", "8 Earth" => "8.1.3", "7 Metal" => "7.7.5", "6 Metal" => "6.4.7", "5 Earth" => "5.1.9", "4 Wood" => "4.7.2", "3 Wood" => "3.4.4", "2 Earth" => "2.1.6", "1 Water" => "1.7.8"},
     {"9 Fire" => "9.3.2", "8 Earth" => "8.9.4", "7 Metal" => "7.6.6", "6 Metal" => "6.3.8", "5 Earth" => "5.9.1", "4 Wood" => "4.6.3", "3 Wood" => "3.3.5", "2 Earth" => "2.9.7", "1 Water" => "1.6.9"},
@@ -73,7 +76,6 @@ module NineStar
     {"9 Fire" => "9.6.8", "8 Earth" => "8.3.1", "7 Metal" => "7.9.3", "6 Metal" => "6.6.5", "5 Earth" => "5.3.7", "4 Wood" => "4.9.9", "3 Wood" => "3.6.2", "2 Earth" => "2.3.4", "1 Water" => "1.9.6"},
     {"9 Fire" => "9.5.9", "8 Earth" => "8.2.2", "7 Metal" => "7.8.4", "6 Metal" => "6.5.6", "5 Earth" => "5.2.8", "4 Wood" => "4.8.1", "3 Wood" => "3.5.3", "2 Earth" => "2.2.5", "1 Water" => "1.8.7"},
     {"9 Fire" => "9.4.1", "8 Earth" => "8.1.3", "7 Metal" => "7.7.5", "6 Metal" => "6.4.7", "5 Earth" => "5.1.9", "4 Wood" => "4.7.2", "3 Wood" => "3.4.4", "2 Earth" => "2.1.6", "1 Water" => "1.7.8"},
-    {"9 Fire" => "9.3.2", "8 Earth" => "8.9.4", "7 Metal" => "7.6.6", "6 Metal" => "6.3.8", "5 Earth" => "5.9.1", "4 Wood" => "4.6.3", "3 Wood" => "3.3.5", "2 Earth" => "2.9.7", "1 Water" => "1.6.9"}
   ]
 
   def get_star_ki_number(index,element)
@@ -186,8 +188,12 @@ class Date
   include NineStar
 
   def star_ki_number
-    element = get_ki_element_for_year(self.year)
     index = get_date_range_index_from_date(self)
+    if self.yday <= 34
+      element = get_ki_element_for_year(self.year - 1)
+    else
+      element = get_ki_element_for_year(self.year)
+    end
     get_star_ki_number(index, element)
   end
 
